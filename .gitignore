@@ -1,0 +1,12 @@
+# Ignorar el entorno virtual
+venv/
+.venv/
+ENV/
+
+# Ignorar archivos temporales de Python
+_pycache_/
+*.pyc
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
