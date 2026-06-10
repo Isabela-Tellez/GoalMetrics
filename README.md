@@ -2,7 +2,7 @@
 
 # GoalMetrics - Analítica de Fútbol Internacional
 
-<img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="220"/>
+<img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="380"/>
 
 <br><br>
 
