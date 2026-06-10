@@ -43,7 +43,7 @@ Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/ra
 
 ---
 
-📈 Reporte de Análisis Estadístico (Fase 1)
+## 📈 Reporte de Análisis Estadístico (Fase 1)
 Tras ejecutar el motor estádistico en 'src/fase1_analisis.py', los datos brutos han sido transformados en las siguientes conclusiones e historias clave:
 
 * **📊 Análisis Descriptivo:** El partido internacional promedio tiene 2.94 goles (mediana de 3.0), con marcadores generalmente cerrados.
