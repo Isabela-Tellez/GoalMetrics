@@ -23,15 +23,20 @@
 ---
 
 ## 🔍 Reporte de Auditoría inicial (Fase 0 - Sanity Check)
-Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/raw'), se han extraído los siguientes hallazgos críticos que justifican su limpieza:
+Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/raw'), se han extraído los siguientes hallazgos críticos e historias iniciales:
 
-* **'results.csv' (47,126 filas | 9 columnas)**
+* **⚽ 'results.csv' (47,126 filas | 9 columnas)**
     * **Calidad:** Se detectaron 15 registros corruptos sin nombre de equipo ('home_team'/'away_team') y 51 partidos sin marcador númerico ('home_score'/'away_score').
-    * **Outliers:** El método IQR detecta 6,059 partidos atípicos (Se considera anomalía cualquier marcador mayor a 3 goles). El método Z-Score (|Z| > 3) es más preciso para el negocio del fútbol, aislando 585 goleadas extremas históricas.
+    * **Outliers:** El método IQR detecta 6,059 partidos atípicos en casa y 661 como visitante (Marcadores fuera del rango tradicional). El análisis Z-Score ($|Z| > 3$) aisla con precisión para el negocio del fútbol, aislando goleadas extremas históricas (585 partidos en casa y 661 fuera).
+    * **Storytelling:** Los datos revelan que 'brazil' (600) y 'argentina' (585) dominan la localía histórica, pero 'united states' es el mayor anfitrión global con 1,353 partidos disputados. Los partidos 'friendly' (17,902) duplican a las eliminatorias mundialistas (8,052).
 
-* **'goalscorers.csv' (44,110 filas| 8 columnas)**
-    * **Integridad:** Se detectaron **119 filas duplicadas** que deben ser purgadas.
-    * **Nulos:** Existen 50 goles sin autor ('scorer') y 263 registros si el minuto exacto del gol ('minute').
+* **🏃🏻‍♂️ 'goalscorers.csv' (44,110 filas| 8 columnas)**
+    * **Integridad:** Se detectaron **119 filas duplicadas** quq deben ser purgadas para no inflar las estadísticas.
+    * **Nulos:** Existen 50 goles sin autor ('scorer') y 263 registros sin el minuto exacto del gol ('minute').
+    * **Outliers:** 0 atípicos en la columna 'minute' (Rango conherente de 1 a 122 minutos en prórrogas).
+    * **Storytelling:** Los datos coronan a 'cristiano ronaldo' con 111 goles en el dataset, imponiéndose estadísticamente sobre 'robert lewandowski' (62) y 'lionel messi' (54). 
 
 * **'shootouts.csv' (636 filas | 5 columnas)**
-    * **Estado:** No representa duplicados. La columna 'first_shooter' tiene nulos estructurales por falta de registro histórico, pero las variables core de los partidos y el ganador ('winner') están 100% íntegras.
+    * **Estado:** No representa duplicados. Las variables de los equipos y el ganador ('winner') están 100% integros.
+    * **Nulos:** La columna 'first_shooter' tiene 414 nulos estructurales por falta de registro en trasmisiones antiguas.
+    * **Storytelling:** 'south korea' aparece como una de las selecciones con mayor peso histórico y frecuencia en el drama de las tandas de penaltis.
