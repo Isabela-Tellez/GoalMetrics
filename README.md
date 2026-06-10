@@ -1,5 +1,3 @@
-# ⚽ GoalMetrics - Analítica de Fútbol Internacional
-
 <div align="center">
 
 # ⚽ GoalMetrics - Analítica de Fútbol Internacional
