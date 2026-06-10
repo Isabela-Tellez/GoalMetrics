@@ -5,15 +5,15 @@
 </p>
 
 <p align = "center">
-    ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
-    ![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
-    ![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
-    ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-    ![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-    ![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
-    ![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
-    ![Versión](https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge)
+![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
+![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
+![Versión](https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge)
 --- 
 </p>
 
