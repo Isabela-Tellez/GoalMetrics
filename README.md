@@ -1,7 +1,7 @@
 # ⚽ GoalMetrics - Analítica de Fútbol Internacional
 
 <p align = "center">
-    <img src = "assets/Logo.jpeg" alt = "GoalMetrics Logo" width = "200"/>
+    <img src = "assets/LogoNoFondo.jpeg" alt = "GoalMetrics Logo" width = "200"/>
 </p>
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
