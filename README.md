@@ -40,3 +40,13 @@ Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/ra
     * **Estado:** No representa duplicados. Las variables de los equipos y el ganador ('winner') están 100% integros.
     * **Nulos:** La columna 'first_shooter' tiene 414 nulos estructurales por falta de registro en trasmisiones antiguas.
     * **Storytelling:** 'south korea' aparece como una de las selecciones con mayor peso histórico y frecuencia en el drama de las tandas de penaltis.
+
+---
+
+📈 Reporte de Análisis Estadístico (Fase 1)
+Tras ejecutar el motor estádistico en 'src/fase1_analisis.py', los datos brutos han sido transformados en las siguientes conclusiones e historias clave:
+
+* **📊 Análisis Descriptivo:** El partido internacional promedio tiene 2.94 goles (mediana de 3.0), con marcadores generalmente cerrados.
+* **⏳ Segentación por Épocas:** El gol tocó fondo en los 80 (2.52 goles/partido) por el fútbol defensivo, repuntó en los 2000 (2.80) y bajó levemente hasta hoy (2.67).
+* **🔗 Análisis de factores:** Los campos neutrales promedian más goles (3.05) que los partidos con localía real (2.92), rompiendo el mito de que son aburridos.
+* **🎯 Validación de hipótesis:** Se confirma la ventaja en casa; el locar gana el 49.04% de las veces frente a un tímito 28.23% del visitante. 
