@@ -52,8 +52,23 @@ def inspeccion_profunda_futbol(nombre_archivo):
         if col in df.columns:
             print(f"\n--- [Top 10] Frecuencias para la columna: '{col}' (Incluye Nulos) ---")
             print(df[col].value_counts(dropna=False).head(10))
-            
-    # 3. DETECCIÓN AVANZADA DE OUTLIERS (IQR vs. Z-SCORE)
+
+    #3. NORMALIZACIÓN DE TEXTO (ESTILO PANDAS)
+    columnas_texto = ['home_team', 'away_team', 'tournament', 'city', 'country']
+
+    for col in columnas_texto:
+        if col in df_clean.columns:
+            df_clean[col] = df_clean[col].str.lower().str.strip()
+        
+            # Extra: Se retiran acentos básicos de forma nativa en Pandas
+            df_clean[col] = df_clean[col].str.replace('á', 'a').str.replace('é', 'e')\
+                                         .str.replace('í', 'i').str.replace('ó', 'o')\
+                                         .str.replace('ú', 'u')
+
+    print("Text normalization complete ✅")
+    df_clean[['home_team', 'away_team', 'tournament', 'city']].head(10)
+    
+    # 4. DETECCIÓN AVANZADA DE OUTLIERS (IQR vs. Z-SCORE)
     print("\n=== 🚨 AUDITORÍA DE OUTLIERS (VALORES ATÍPICOS) ===")
     columnas_numericas = df.select_dtypes(include=[np.number]).columns
     
