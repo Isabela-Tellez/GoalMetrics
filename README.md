@@ -1,20 +1,24 @@
 # ⚽ GoalMetrics - Analítica de Fútbol Internacional
 
-<p align = "center">
+<div align="center">
     <img src = "assets/LogoNoFondo.png" alt = "GoalMetrics Logo" width = "500"/>
-</p>
 
+<br>
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
 
+<br>
 ![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
 ![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
 ![Versión](https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge)
+
+<br>
+
+</div>
 --- 
-</p>
 
 ## 🔍 Reporte de Auditoría inicial (Fase 0 - Sanity Check)
 Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/raw'), se han extraído los siguientes hallazgos críticos que justifican su limpieza:
