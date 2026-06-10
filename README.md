@@ -36,7 +36,7 @@ Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/ra
     * **Outliers:** 0 atípicos en la columna 'minute' (Rango conherente de 1 a 122 minutos en prórrogas).
     * **Storytelling:** Los datos coronan a 'cristiano ronaldo' con 111 goles en el dataset, imponiéndose estadísticamente sobre 'robert lewandowski' (62) y 'lionel messi' (54). 
 
-* **'shootouts.csv' (636 filas | 5 columnas)**
+* **🎯 'shootouts.csv' (636 filas | 5 columnas)**
     * **Estado:** No representa duplicados. Las variables de los equipos y el ganador ('winner') están 100% integros.
     * **Nulos:** La columna 'first_shooter' tiene 414 nulos estructurales por falta de registro en trasmisiones antiguas.
     * **Storytelling:** 'south korea' aparece como una de las selecciones con mayor peso histórico y frecuencia en el drama de las tandas de penaltis.
