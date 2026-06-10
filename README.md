@@ -1,12 +1,10 @@
 <div align="center">
 
-# ⚽ GoalMetrics - Analítica de Fútbol Internacional
+<img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="250"/>
 
-# <img src="assets/LogoNoFondo.png" alt="GoalMetrics Icon" width="50" height="50" valign="middle"> GoalMetrics - Analítica de Fútbol Internacional
+# GoalMetrics - Analítica de Fútbol Internacional
 
 <br>
-
-<div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
