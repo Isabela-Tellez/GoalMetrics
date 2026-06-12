@@ -46,7 +46,7 @@ Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/ra
 ## 📈 Reporte de Análisis Estadístico (Fase 1)
 Tras ejecutar el motor estádistico en 'src/fase1_analisis.py', los datos brutos han sido transformados en las siguientes conclusiones e historias clave:
 
-* **📊 Análisis Descriptivo:** El partido internacional promedio tiene 2.94 goles (mediana de 3.0), con marcadores generalmente cerrados.
-* **⏳ Segentación por Épocas:** El gol tocó fondo en los 80 (2.52 goles/partido) por el fútbol defensivo, repuntó en los 2000 (2.80) y bajó levemente hasta hoy (2.67).
-* **🔗 Análisis de factores:** Los campos neutrales promedian más goles (3.05) que los partidos con localía real (2.92), rompiendo el mito de que son aburridos.
-* **🎯 Validación de hipótesis:** Se confirma la ventaja en casa; el locar gana el 49.04% de las veces frente a un tímito 28.23% del visitante. 
+* **📊 Análisis Descriptivo:** El partido promedio tiene 2.94 goles (mediana de 3.0), concentrados en marcadores cortos pero con un sesgo a la derecha debido a goleadas atípicas aisladas.
+* **⏳ Segentación por Épocas:** El gol tocó fondo en los 80 (2.52 goles/partido) y repuntó en los 2000 (2.80), destacando que en los 90/2000 la mediana en campos neutrales subió a (3.0).
+* **🔗 Análisis de factores:** Los campos neutrales promedian más goles (3.05) que los de localía real (2.91), y la probabilidad de ver > 4 goles es casi idéntica en amistosos (128.46%) que en oficiales (19.19%).
+* **🎯 Validación de hipótesis:** Se confirma la ventaja en casa (local gana el 49.04% vs 28.23% visitante), pero el test ANOVA (P-Value: 0.3758) demuestra que el torneo no influye en el promedio global. 
