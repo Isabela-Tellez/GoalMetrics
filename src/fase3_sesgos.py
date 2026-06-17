@@ -16,7 +16,8 @@ def grafico_correlacion(df):
         y="away_score", 
         opacity=0.5,
         template="plotly_dark",
-        trendline="ols" # Opcional: añade línea de tendencia para ver si hay correlación
+        trendline="ols",
+        color_discrete_sequence=["#c63637"]
     )
     return fig
 
@@ -44,6 +45,7 @@ def grafico_top_equipos(df):
         x="wins",
         y="team",
         orientation="h",
-        template=TEMPLATE
+        template=TEMPLATE,
+        color_discrete_sequence=["#c63637"]
     )
     return fig

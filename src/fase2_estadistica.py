@@ -15,7 +15,8 @@ def obtener_grafico_localia(df):
         values='Cantidad',
         names='Resultado',
         hole=0.5,
-        template=TEMPLATE
+        template=TEMPLATE,
+        color_discrete_sequence=['#F2BC57', '#c63637', '#5ac15d'] 
     )
     return fig
 
@@ -27,7 +28,8 @@ def obtener_grafico_evolucion_goles(df):
         x='decade',
         y='total_goals',
         markers=True,
-        template=TEMPLATE
+        template=TEMPLATE,
+        color_discrete_sequence=["#5ac15d"]
     )
     return fig
 
