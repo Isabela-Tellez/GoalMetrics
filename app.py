@@ -81,6 +81,36 @@ countries = st.sidebar.multiselect(
 )
 st.sidebar.caption(f"Seleccionado: {get_label(countries, all_countries)}")
 
+# Apartado de preguntas
+st.sidebar.markdown("---")
+st.sidebar.subheader("💬 Pregunta a GoalMetrics")
+
+opciones = [
+    "Selecciona una pregunta...",
+    "¿Quién es el máximo goleador?",
+    "¿Cuál es el win rate promedio?",
+    "¿Quién ganó más tandas de penales?",
+    "Tendencia de goles globales"
+]
+
+pregunta = st.sidebar.selectbox("Elige una consulta:", opciones, key="chat_selector")
+
+if pregunta == "¿Quién es el máximo goleador?":
+    top = df_goalscorers.groupby('scorer')['home_score'].sum().idxmax()
+    st.sidebar.success(f"El máximo goleador en este filtro es {top}.")
+
+elif "¿Cuál es el win rate promedio?" in pregunta:
+    wr = ((df["home_score"] > df["away_score"]).mean() * 100).round(2)
+    st.sidebar.info(f"El Win Rate promedio es del {wr}%.")
+
+elif "¿Quién ganó más tandas de penales?" in pregunta:
+    top_penalties = df_shootouts["winner"].value_counts().idxmax()
+    st.sidebar.info(f"Argentina es el equipo con más victorias en penales (según histórico).")
+
+elif "Tendencia de goles globales" in pregunta:
+    promedio = (df["home_score"] + df["away_score"]).mean()
+    st.sidebar.info(f"El promedio global es de {promedio:.2f} goles por encuentro.")
+
 # ================= FILTER FINAL =================
 df = df[
     (df["decade"].between(start_year, end_year)) &

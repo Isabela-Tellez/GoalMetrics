@@ -27,3 +27,17 @@ def generar_insights_automaticos(df):
         f"**Tendencia Global:** El {home_win_pct:.1f}% de los partidos internacionales favorece al anfitrión.",
         f"**Volumen:** Analizando un total de {total_matches:,} registros históricos."
     ]
+
+def generar_informe_profesional(df):
+    total_matches = len(df)
+    home_wins = (df['home_score'] > df['away_score']).mean() * 100
+    top_scorer = df['scorer'].value_counts().idxmax()
+    
+    return f"""
+    ### Análisis de Rendimiento
+    Basado en el filtrado actual, se han procesado **{total_matches:,}** partidos.
+    
+    * **Tendencia de Localía:** Los equipos locales ganan el {home_wins:.1f}% de los encuentros.
+    * **Figura Clave:** {top_scorer} lidera la tabla de goleadores histórica.
+    * **Conclusión:** El dataset muestra un dominio constante del factor campo.
+    """

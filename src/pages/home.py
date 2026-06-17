@@ -51,7 +51,6 @@ def render(df):
         else:
             items_html += f'<div style="margin-bottom: 12px; color: #cbd5e1;">• {line_clean}</div>'
 
-    # 2. IMPORTANTE: El st.markdown debe estar pegado al margen izquierdo del archivo
     st.markdown(f"""
     <div style="background: #111827; padding: 20px; border-radius: 15px; border-left: 5px solid #F59E0B; margin-top: 20px">
     <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">🧠 GoalMetrics AI Insights</h3>
@@ -72,6 +71,14 @@ def render(df):
         </p>
     </div>
     """.format(len(df)), unsafe_allow_html=True)
+
+    # Generació Informe Inteligente
+    if st.button("🤖 Generar Informe Inteligente"):
+        with st.spinner('Analizando tendencias históricas...'):
+            # Asegúrate de tener esta función en tu utils.py o cámbiala por un texto directo
+            informe = utils.generar_informe_profesional(df) 
+            with st.expander("📝 Informe Ejecutivo de Rendimiento", expanded=True):
+                st.markdown(informe)
 
     # Lógica de datos
     logging.getLogger("country_converter").setLevel(logging.ERROR)
