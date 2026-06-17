@@ -1,49 +1,65 @@
-"""
-MÓDULO DE UNIFICACIÓN (FASE 2): Combinación de los 3 datasets originales
-en una única tabla maestra optimizada para Power BI.
-"""
-
-import os
+import plotly.express as px
 import pandas as pd
-import numpy as np
 
-RUTA_RAW = os.path.join("data", "raw")
-RUTA_PROCESSED = os.path.join("data", "processed")
-os.makedirs(RUTA_PROCESSED, exist_ok=True)
+# CONFIGURACIÓN DE ESTILO PARA LAS GRÁFICAS (Mantiene la coherencia visual)
+TEMPLATE = "plotly_dark"
+COLOR_GOLD = "#F59E0B"
+COLOR_AMBER = "#D97706"
 
-def unificar_datasets_powerbi():
-    print("🔄 Iniciando carga y unificación de los 3 datasets...")
-    
-    # 1. Carga de los 3 archivos originales de forma independiente
-    df_results_orig = pd.read_csv(os.path.join(RUTA_RAW, "results.csv"))
-    df_shootouts_orig = pd.read_csv(os.path.join(RUTA_RAW, "shootouts.csv"))
-    df_scorers_orig = pd.read_csv(os.path.join(RUTA_RAW, "goalscorers.csv"))
-    
-    # 2. Creación de copias explícitas para trabajar de forma segura
-    results = df_results_orig.copy()
-    shootouts = df_shootouts_orig.copy()
-    scorers = df_scorers_orig.copy()
-    
-    # 3. Homologar el formato de fecha en TODOS los DataFrames para evitar el ValueError
-    results['date'] = pd.to_datetime(results['date'])
-    shootouts['date'] = pd.to_datetime(shootouts['date'])
-    scorers['date'] = pd.to_datetime(scorers['date'])
-    
-    # 4. Procesado de métricas base en la tabla principal (Results)
-    results['total_goals'] = results['home_score'] + results['away_score']
-    results['decade'] = (results['date'].dt.year // 10) * 10
-    
-    condiciones = [results['home_score'] > results['away_score'], results['home_score'] < results['away_score']]
-    results['resultado_match'] = np.select(condiciones, ['Victoria Local', 'Victoria Visitante'], default='Empate')
-    
-    # 5. Cruce de los datos (Merge) ahora que las llaves de fecha coinciden perfectamente
-    df_unificado = pd.merge(results, shootouts, on=['date', 'home_team', 'away_team'], how='left')
-    df_final = pd.merge(df_unificado, scorers, on=['date', 'home_team', 'away_team'], how='left')
-    
-    # 6. Exportación de la tabla maestra final
-    ruta_salida = os.path.join(RUTA_PROCESSED, "master_powerbi.csv")
-    df_final.to_csv(ruta_salida, index=False)
-    print(f"✅ ¡Éxito! Tabla maestra unificada creada en: {ruta_salida}")
+def obtener_grafico_localia(df):
+    data = df['resultado_match'].value_counts().reset_index()
+    data.columns = ['Resultado', 'Cantidad']
 
-if __name__ == "__main__":
-    unificar_datasets_powerbi()
+    fig = px.pie(
+        data,
+        values='Cantidad',
+        names='Resultado',
+        hole=0.5,
+        template=TEMPLATE
+    )
+    return fig
+
+def obtener_grafico_evolucion_goles(df):
+    df_evo = df.groupby('decade')['total_goals'].mean().reset_index()
+
+    fig = px.line(
+        df_evo,
+        x='decade',
+        y='total_goals',
+        markers=True,
+        template=TEMPLATE
+    )
+    return fig
+
+def obtener_grafico_dominio_por_decada(df):
+    df_dom = df[df['resultado_match'] == 'Victoria Local'] \
+        .groupby('decade').size().reset_index(name='victorias')
+    fig = px.bar(df_dom, x='decade', y='victorias', template="plotly_dark", 
+                color_discrete_sequence=['#F2BC57'])
+    return fig
+
+def obtener_grafico_potencia(df):
+    df_top = df[df['resultado_match'] == 'Victoria Local'] \
+        .groupby('home_team').size().reset_index(name='victorias')
+
+    df_top = df_top.sort_values('victorias', ascending=False).head(10)
+
+    fig = px.bar(
+        df_top,
+        x='victorias',
+        y='home_team',
+        orientation='h',
+        template=TEMPLATE
+    )
+    return fig
+
+
+def obtener_grafico_outliers(df):
+    fig = px.scatter(
+        df,
+        x='date',
+        y='total_goals',
+        color='total_goals',
+        template=TEMPLATE
+    )
+    return fig

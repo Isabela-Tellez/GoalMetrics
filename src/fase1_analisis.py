@@ -13,7 +13,8 @@ RUTA_RAW = os.path.join("data", "raw")
 
 def carga_y_limpieza_datos():
     """Carga de los datos y aplicación de normalización de la Fase 0"""
-    df_results = pd.read_csv(os.path.join(RUTA_RAW, "results.csv"))
+    df_results = pd.read_csv(os.path.join(RUTA_RAW, "results.csv")) 
+    df_shootouts = pd.read_csv(os.path.join(RUTA_RAW, "shootouts.csv"))
     df_goalscorers = pd.read_csv(os.path.join(RUTA_RAW, "goalscorers.csv"))
 
     columnas_futbol = ['home_team', 'away_team', 'tournament', 'country']
@@ -23,12 +24,30 @@ def carga_y_limpieza_datos():
             df_results[col] = df_results[col].str.replace('á', 'a').str.replace('é', 'e')\
                                             .str.replace('í', 'i').str.replace('ó', 'o')\
                                             .str.replace('ú', 'u')
-            
+
+    # 1. Eliminación filas vacías
     df_results = df_results.dropna(subset=['home_score', 'away_score'])
-    return df_results, df_goalscorers
+
+    # Función para normalizar nombres en cualquier DF
+    def limpiar_nombres(df):
+        columnas = ['home_team', 'away_team']
+        mapeo = {"central spain": "spain", "west germany": "germany"}
+        for col in columnas:
+            if col in df.columns:
+                df[col] = df[col].astype(str).str.lower().str.strip()
+                # Aplicar normalización de tildes aquí si es necesario
+                df[col] = df[col].replace(mapeo)
+        return df
+
+    # Aplicar a todos los DFs
+    df_results = limpiar_nombres(df_results)
+    df_shootouts = limpiar_nombres(df_shootouts)
+    df_goalscorers = limpiar_nombres(df_goalscorers)
+
+    return df_results, df_goalscorers, df_shootouts
 
 def ejecucion_fase1_estadistica():
-    df_results, df_goalscorers = carga_y_limpieza_datos()
+    df_results, df_goalscorers, df_shootouts = carga_y_limpieza_datos()
 
     print("=" * 80)
     print("📈 FASE 1: ANÁLISIS ESTADÍSTICO Y DATA STORYTELLING CONSOLIDADO - GOALMETRICS")
