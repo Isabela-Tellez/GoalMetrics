@@ -14,20 +14,26 @@ section[data-testid="stSidebar"] {
 }
 
 /* TAB STYLE */
-.stTabs [data-baseweb="tab-list"] {
-    justify-content: center;
-    gap: 12px;
-}
+div[data-baseweb="tab-list"] {
+        justify-content: center !important;
+        gap: 10px !important; 
+        border-bottom: none !important;
+    }
 
-.stTabs [data-baseweb="tab"] {
-    font-weight: 600;
-}
+    /* Tamaño de fuente grande sin paddings excesivos */
+    button[data-baseweb="tab"] {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        padding: 10px 20px !important;
+        color: #ffffff !important;
+        border-bottom: 3px solid transparent !important;
+    }
 
-.stTabs [aria-selected="true"] {
-    background-color: #F2E205 !important;
-    color: black !important;
-    font-weight: 800;
-}
+    /* Estilo de la pestaña activa */
+    button[aria-selected="true"] {
+        color: #00ff96 !important;
+        border-bottom: 3px solid #00ff96 !important;
+    }
 
 /* INSIGHT BOX */
 .insight-card {

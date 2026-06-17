@@ -16,10 +16,68 @@ st.set_page_config(
 # ================= CSS GLOBAL =================
 st.markdown("""
     <style>
-    /* Asegura una sola línea, centra los elementos y añade separación fija */
-    [data-testid="stHorizontalBlock"] { flex-wrap: nowrap !important; justify-content: center !important; gap: 60px !important; }
-    /* Estilo del texto */
-    button p { font-size: 18px !important; font-weight: 700 !important; }
+    
+    /* Fondo Premium y Efectos Globales */
+    .stApp { background: linear-gradient(135deg, #0B1020, #111827, #0F172A) !important; color: #ffffff !important; }
+    
+    div[data-testid="stVerticalBlock"] > div { transition: all 0.3s ease-in-out; }
+    div[data-testid="stVerticalBlock"] > div:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 255, 150, 0.1);
+        border-radius: 10px;
+    }
+    
+    /* Forzar el ancho completo del contenedor de tabs */
+    div[data-testid="stTabs"] {
+        width: 100% !important;
+    }
+
+    /* Separación y tamaño de las pestañas */
+    button[data-baseweb="tab"] {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        padding: 10px 15px !important;
+        color: #ffffff !important;
+        background-color: transparent !important;
+    }
+
+    /* Eliminar la barra roja y poner la verde */
+    div[data-baseweb="tab-list"] {
+        gap: 30px !important;
+        justify-content: center !important;
+    }
+    
+    /* Sobrescribir variables de tema de Streamlit forzando verde */
+    div[data-baseweb="tag"] {
+        background-color: rgba(0, 255, 150, 0.2) !important;
+        border: 1px solid #00ff96 !important;
+        color: #00ff96 !important;
+    }
+    div[data-baseweb="tag"] span[role="presentation"] {
+        color: #00ff96 !important;
+    }
+        
+    /* Eliminar espacio del título */
+    [data-testid="stSidebar"] h3 {
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    /* Acercar títulos a las cajas (Sidebar) */
+    [data-testid="stSidebar"] h3 {
+        margin-bottom: -10px !important;
+        margin-top: 10px !important;
+    }
+    
+    /* Ajuste extra para que el multiselect no se vea separado */
+    div[data-testid="stVerticalBlock"] div[data-baseweb="select"] {
+        margin-top: -5px !important;
+    }
+    
+    div[data-baseweb="tab-list"] > button[aria-selected="true"] {
+        border-bottom: 4px solid #00ff96 !important;
+        color: #00ff96 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -119,7 +177,6 @@ df = df[
 ]
 
 # ================= NAVIGATION =================
-
 tabs = st.tabs([
     "🏠 Inicio",
     "📅 Evolución",
