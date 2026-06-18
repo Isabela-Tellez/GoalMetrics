@@ -1,35 +1,29 @@
 <div align="center">
+  <img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="420"/>
+  <h1>GoalMetrics</h1>
+  <p><b>Dashboard de Analítica para el Mundial FIFA · Histórico 1872–2024</b></p>
 
-<img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="420"/>
+  <p style="line-height: 0;">
+    <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+    <img src="https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/>
+    <img src="https://img.shields.io/badge/VS_Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+  </p>
 
-# GoalMetrics
-
-**Dashboard de Analítica para el Mundial FIFA · Histórico 1930–2022**
-
-<br><br>
-
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
-
-<br>
-
-*Inteligencia de datos aplicada al fútbol · Análisis de rendimiento · Detección de sesgos*
-
-![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
-![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
-![Versión](https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge)
-
+  <p style="line-height: 0;">
+    <img src="https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge"/>
+    <img src="https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge"/>
+  </p>
 </div>
 
 ---
 
 ## Fuente de Datos
 
-**Dataset histórico:** [International football results from 1872 to present]([https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/brunokonzen/football-results-national-teams-18722025)). Variables numéricas: `home_score`, `away_score` (marcadores), `minute` (tiempo de evento). Variables categóricas: `team`, `scorer`, `tournament`, `city`, `country`. Variables booleanas: `neutral`, `own_goal`, `penalty`.
+**Dataset histórico:** [International football results from 1872 to 2026](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?select=goalscorers.csv). Variables numéricas: `home_score`, `away_score` (marcadores), `minute` (tiempo de evento). Variables categóricas: `team`, `scorer`, `tournament`, `city`, `country`. Variables booleanas: `neutral`, `own_goal`, `penalty`.
 
 Registro histórico de más de 46,000 partidos internacionales de fútbol masculino. Este dataset, mantenido por Mart Jürisoo, se actualiza regularmente para incluir los encuentros más recientes a nivel global.
 
@@ -131,6 +125,7 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 - **Segmentación temporal** — Guía estratégica para aplicar filtros por décadas, permitiendo ajustar los modelos de predicción a la evolución táctica del juego.
 - **Factor localía** — Directriz técnica para integrar la ventaja de campo como variable crítica y ponderada en cualquier algoritmo de probabilidades.
 - **Enriquecimiento de datos** — Hoja de ruta para la escalabilidad, proponiendo la integración de rankings FIFA y factores externos para maximizar la precisión predictiva.
+</details>
 
 <details>
 <summary><strong>📌 Conclusiones</strong></summary>
@@ -140,3 +135,109 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 </details>
 
 ---
+
+## Instalación Local
+```bash
+
+# 1. Clonación el repositorio
+git clone https://github.com/Isabela-Tellez/GoalMetrics.git
+cd GOALMETRICS
+
+# 2. Creación y activación del entorno virtual
+python -m venv venv
+venv\Scripts\activate         # Windows
+source venv/bin/activate      # macOS / Linux
+
+# 3. Instalación de dependencias
+pip install -r requirements.txt
+
+# 4. Lanzar la app
+streamlit run app.py
+```
+
+---
+
+<details>
+<summary><strong>Estructura del Proyecto</strong></summary>
+
+```
+GoalMetrics/
+├── assets/
+|   |── logo.jpeg
+|   └── LogoNoFondo.png                  # Elementos visuales
+├── data/
+│   ├── processed/
+|   |   └── master_dataset.csv           # CSV conjunto listo para el dashboard (results, goalscorers, shootouts)
+│   └── raw/
+|       ├── goalscorers.csv              # CSV Detalle granular de eventos de gol, incluyendo minuto y tipo de anotación
+|       ├── results.csv                  # CSV Histórico global de partidos con marcadores, sedes y fechas
+|       └── shootuts.csv                 # CSV Registro de resoluciones de partidos desde el punto de penalti
+├── src/
+│   ├── __init__.py
+|   ├── fase0_diagnostico.py             # Diagnóstico, limpieza inicial y detección de valores atípicos en datasets de fútbol
+│   ├── fase1_analisis.py                # Automatiza la limpieza, cálculo de métricas descriptivas y validación de hipótesis
+│   ├── fase2_estadistica.py             # Genera gráficos interactivos, analizando tendencias históricas, localía, dominio de equipos y valores atípicos
+|   ├── fase3_sesgos                     # Audita sesgos estadísticos y patrones de juego para identificar anomalías y desequilibrios
+│   ├── utils.py                         # Helpers: formateo, AI Insights, selectores
+│   └── pages/                           # Componentes de renderizado por pestaña
+│       ├── __init__.py
+│       ├── home.py                      # Tab 1: Inicio y KPIs
+│       ├── evolution.py                 # Tab 2: Tendencias temporales
+│       ├── results.py                   # Tab 3: Performance y marcadores
+│       ├── governance.py                # Tab 4: Análisis de sesgos
+│       ├── recommendations.py           # Tab 5: Guía estratégica
+│       └── conclusions.py               # Tab 6: Síntesis y roadmap
+|── styles
+|   └── global.css                       # Hoja de estilos centralizada
+├── app.py                               # Entrypoint principal (main)
+├── .gitignore                           # Excluye data/raw/, __pycache__/, .env
+├── requirements.txt                     # Dependencias fijadas (streamlit, pandas, plotly, etc.)
+└── README.md                            # Documentación del proyecto
+```
+</details>
+
+<details>
+<summary><strong>Stack Tecnológico y Datos</strong></summary>
+
+### Stack
+
+<div align="center">
+
+| Capa | Tecnología | Versión |
+|------|-----------|---------|
+| Framework UI | [Streamlit](https://streamlit.io/) | 1.58.0 |
+| Visualizaciones | [Plotly](https://plotly.com/python/) | 6.8.0 |
+| Procesamiento de datos | [Pandas](https://pandas.pydata.org) | 3.0.3 |
+| Álgebra numérica | [NumPy](https://numpy.org) | 2.4.6 |
+| CI/CD | GitHub Actions → GitHub Pages | — |
+
+</div>
+
+### Esquema de datos
+
+**Fuente histórica:** [International football results from 1872 to 2026]([https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?select=goalscorers.csv))
+
+<div align="center">
+
+| Archivo | Registros | Columnas clave |
+|---------|-----------|----------------|
+| `results.csv` | 46,000+ | `date`, `home_team`, `away_team`, `home_score`, `away_score`, `attendance` |
+| `goalscorers.csv` | 44,000+ | `date`, `home_team`, `team`, `scorer`, `minute` |
+| `shootouts.csv` | 600+ | `date`, `home_team`, `winner`, `first_shooter` |
+| `master_dataset.csv` | 46,000+ | Unión relacional de las fuentes con variables calculadas (`decade`, `total_goals`, `resultado_match`)|
+
+</div>
+
+</details>
+
+---
+
+## Licencia
+
+Este proyecto es de uso interno / analítico. Los datos históricos históricos de fútbol de Kaggle se utilizan con fines educativos y analíticos.
+
+---
+
+<div align="center">
+  Movida por la pasión y la fiebre del fútbol por <a href="https://github.com/Isabela-Tellez">Isabela-Tellez</a>
+</div>
