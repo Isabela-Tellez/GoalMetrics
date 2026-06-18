@@ -1,28 +1,22 @@
 <div align="center">
+  <img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="420"/>
+  <h1>GoalMetrics</h1>
+  <p><b>Dashboard de Analítica para el Mundial FIFA · Histórico 1872–2024</b></p>
 
-<img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="420"/>
+  <p style="line-height: 0;">
+    <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+    <img src="https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/>
+    <img src="https://img.shields.io/badge/VS_Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+  </p>
 
-# GoalMetrics
-
-**Dashboard de Analítica para el Mundial FIFA · Histórico 1872–2024**
-
-<br><br>
-
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
-
-<br>
-
-*Inteligencia de datos aplicada al fútbol · Análisis de rendimiento · Detección de sesgos*
-
-![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
-![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
-![Versión](https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge)
-
+  <p style="line-height: 0;">
+    <img src="https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge"/>
+    <img src="https://img.shields.io/badge/Versión-1.0.0-15315B?style=for-the-badge"/>
+  </p>
 </div>
 
 ---
