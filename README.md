@@ -58,12 +58,12 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 
 | Tab | Pregunta de negocio | Salida clave |
 |:---|:---|:---|
-| 📈 Visión Histórica | ¿Cómo ha evolucionado el fútbol desde 1872? | Tendencia de goles, crecimiento de torneos |
-| ⚽ Eficacia Goleadora | ¿Quiénes son los máximos anotadores? | Ranking de goleadores, análisis de penaltis |
-| 🏆 Análisis de Torneos | ¿Qué torneos registran mayor volumen? | Comparativa media de goles, top sedes |
-| 🌍 Performance por País | ¿Qué naciones dominan históricamente? | Ranking ofensivo/defensivo, local vs visita |
-| 🔍 Match & Penalty Explorer | ¿Qué partidos fueron más explosivos? | Tabla filtrable por marcador y tandas |
-| 📊 Deep Insights | ¿Qué patrones marcan la historia? | Mapa de calor año/fase, frecuencia goleadora |
+| 🏠 Inicio | ¿Qué mide GoalMetrics? | KPIs globales, AI Insights y Ranking WinRate |
+| 📅 Evolución | ¿Cómo cambió el juego en el tiempo? | Tendencia de goles y ventaja de localía |
+| ⚽ Resultados | ¿Existe ventaja de localía? | Distribución y correlación de marcadores |
+| 🔍 Sesgos | ¿Qué factores alteran los datos? | Análisis de anomalías y ranking de equipos |
+| 🎯 Recomendaciones | ¿Cómo optimizar el análisis? | Guía estratégica y escalabilidad |
+| 📌 Conclusiones | ¿Qué nos dice la historia? | Síntesis estratégica y roadmap futuro |
 
 </div>
 
