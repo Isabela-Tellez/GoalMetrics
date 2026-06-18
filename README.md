@@ -211,10 +211,12 @@ GoalMetrics/
 │       └── conclusions.py               # Tab 6: Síntesis y roadmap
 |── styles
 |   └── global.css                       # Hoja de estilos centralizada
-├── app.py                               # Entrypoint principal (main)
+├── .dockerignore                        # Excluye .git, node_modules o entornos virtuales
 ├── .gitignore                           # Excluye data/raw/, __pycache__/, .env
-├── requirements.txt                     # Dependencias fijadas (streamlit, pandas, plotly, etc.)
-└── README.md                            # Documentación del proyecto
+├── app.py                               # Entry point principal (main)
+├── Dockerfile                           # Contiene las instrucciones paso a paso para automatizar la creación de una imagen de contenedor
+├── README.md                            # Documentación del proyecto
+└── requirements.txt                     # Dependencias fijadas (streamlit, pandas, plotly, etc.)
 ```
 </details>
 
@@ -231,6 +233,7 @@ GoalMetrics/
 | Visualizaciones | [Plotly](https://plotly.com/python/) | 6.8.0 |
 | Procesamiento de datos | [Pandas](https://pandas.pydata.org) | 3.0.3 |
 | Álgebra numérica | [NumPy](https://numpy.org) | 2.4.6 |
+| Contenedores | Docker | — |
 | CI/CD | GitHub Actions → GitHub Pages | — |
 
 </div>
