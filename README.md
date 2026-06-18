@@ -1,8 +1,10 @@
 <div align="center">
 
-# GoalMetrics - Analítica de Fútbol Internacional
-
 <img src="assets/LogoNoFondo.png" alt="GoalMetrics Logo" width="420"/>
+
+# GoalMetrics
+
+**Dashboard de Analítica para el Mundial FIFA · Histórico 1930–2022**
 
 <br><br>
 
@@ -10,9 +12,12 @@
 ![Pandas](https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-1.24-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-VCS-F05032?style=for-the-badge&logo=git&logoColor=white)
 
 <br>
+
+*Inteligencia de datos aplicada al fútbol · Análisis de rendimiento · Detección de sesgos*
 
 ![Ubicación](https://img.shields.io/badge/Madrid-121011?style=for-the-badge&logo=periscope&logoColor=white)
 ![Estado](https://img.shields.io/badge/Estado-Activo-00C5A4?style=for-the-badge)
@@ -22,31 +27,116 @@
 
 ---
 
-## 🔍 Reporte de Auditoría inicial (Fase 0 - Sanity Check)
-Tras ejecutar el motor de diagnóstico profundo sobre los datos brutos ('data/raw'), se han extraído los siguientes hallazgos críticos e historias iniciales:
+## Fuente de Datos
 
-* **⚽ 'results.csv' (47,126 filas | 9 columnas)**
-    * **Calidad:** Se detectaron 15 registros corruptos sin nombre de equipo ('home_team'/'away_team') y 51 partidos sin marcador númerico ('home_score'/'away_score').
-    * **Outliers:** El método IQR detecta 6,059 partidos atípicos en casa y 661 como visitante (Marcadores fuera del rango tradicional). El análisis Z-Score ($|Z| > 3$) aisla con precisión para el negocio del fútbol, aislando goleadas extremas históricas (585 partidos en casa y 661 fuera).
-    * **Storytelling:** Los datos revelan que 'brazil' (600) y 'argentina' (585) dominan la localía histórica, pero 'united states' es el mayor anfitrión global con 1,353 partidos disputados. Los partidos 'friendly' (17,902) duplican a las eliminatorias mundialistas (8,052).
+**Dataset histórico:** [International football results from 1872 to present]([https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/brunokonzen/football-results-national-teams-18722025)). Variables numéricas: `home_score`, `away_score` (marcadores), `minute` (tiempo de evento). Variables categóricas: `team`, `scorer`, `tournament`, `city`, `country`. Variables booleanas: `neutral`, `own_goal`, `penalty`.
 
-* **🏃🏻‍♂️ 'goalscorers.csv' (44,110 filas| 8 columnas)**
-    * **Integridad:** Se detectaron **119 filas duplicadas** quq deben ser purgadas para no inflar las estadísticas.
-    * **Nulos:** Existen 50 goles sin autor ('scorer') y 263 registros sin el minuto exacto del gol ('minute').
-    * **Outliers:** 0 atípicos en la columna 'minute' (Rango conherente de 1 a 122 minutos en prórrogas).
-    * **Storytelling:** Los datos coronan a 'cristiano ronaldo' con 111 goles en el dataset, imponiéndose estadísticamente sobre 'robert lewandowski' (62) y 'lionel messi' (54). 
+Registro histórico de más de 46,000 partidos internacionales de fútbol masculino. Este dataset, mantenido por Mart Jürisoo, se actualiza regularmente para incluir los encuentros más recientes a nivel global.
 
-* **🎯 'shootouts.csv' (636 filas | 5 columnas)**
-    * **Estado:** No representa duplicados. Las variables de los equipos y el ganador ('winner') están 100% integros.
-    * **Nulos:** La columna 'first_shooter' tiene 414 nulos estructurales por falta de registro en trasmisiones antiguas.
-    * **Storytelling:** 'south korea' aparece como una de las selecciones con mayor peso histórico y frecuencia en el drama de las tandas de penaltis.
+> Los CSVs originales no se incluyen en el repositorio.
+
+<div align="center">
+
+| Archivo | Contenido |
+| :--- | :--- |
+| **`results.csv`** | Marcadores, sedes, países y torneos. |
+| **`goalscorers.csv`** | Detalles por minuto, goleadores y tipos de anotación. |
+| **`shootouts.csv`** | Resultados históricos de tandas de penaltis. |
+
+</div>
 
 ---
 
-## 📈 Reporte de Análisis Estadístico (Fase 1)
-Tras ejecutar el motor estádistico en 'src/fase1_analisis.py', los datos brutos han sido transformados en las siguientes conclusiones e historias clave:
+## Descripción General
 
-* **📊 Análisis Descriptivo:** El partido promedio tiene 2.94 goles (mediana de 3.0), concentrados en marcadores cortos pero con un sesgo a la derecha debido a goleadas atípicas aisladas.
-* **⏳ Segentación por Épocas:** El gol tocó fondo en los 80 (2.52 goles/partido) y repuntó en los 2000 (2.80), destacando que en los 90/2000 la mediana en campos neutrales subió a (3.0).
-* **🔗 Análisis de factores:** Los campos neutrales promedian más goles (3.05) que los de localía real (2.91), y la probabilidad de ver > 4 goles es casi idéntica en amistosos (128.46%) que en oficiales (19.19%).
-* **🎯 Validación de hipótesis:** Se confirma la ventaja en casa (local gana el 49.04% vs 28.23% visitante), pero el test ANOVA (P-Value: 0.3758) demuestra que el torneo no influye en el promedio global. 
+*GoalMetrics* es una plataforma de analítica interactiva diseñada para explorar la historia y evolución del fútbol internacional. A través de un análisis profundo de más de 46,000 partidos disputados entre 1872 y 2024, la herramienta permite a entusiastas y analistas deportivos visualizar patrones de rendimiento, eficacia goleadora y la dinámica de las tandas de penaltis a lo largo de más de un siglo de historia.
+
+- **Rendimiento Táctico:** Evaluar la eficacia ofensiva y defensiva de las selecciones mediante el análisis granular de goleadores y minutos de anotación.
+
+- **Evolución del Juego:** Detectar tendencias en el estilo de juego, efectividad de penaltis y patrones de resultados según el torneo y la sede.
+
+- **Inteligencia de Datos:** Transformar registros históricos crudos en insights accionables, permitiendo comparativas históricas entre eras futbolísticas distintas.
+
+---
+
+## Tabs del Dashboard
+<div align="center">
+
+| Tab | Pregunta de negocio | Salida clave |
+|:---|:---|:---|
+| 📈 Visión Histórica | ¿Cómo ha evolucionado el fútbol desde 1872? | Tendencia de goles, crecimiento de torneos |
+| ⚽ Eficacia Goleadora | ¿Quiénes son los máximos anotadores? | Ranking de goleadores, análisis de penaltis |
+| 🏆 Análisis de Torneos | ¿Qué torneos registran mayor volumen? | Comparativa media de goles, top sedes |
+| 🌍 Performance por País | ¿Qué naciones dominan históricamente? | Ranking ofensivo/defensivo, local vs visita |
+| 🔍 Match & Penalty Explorer | ¿Qué partidos fueron más explosivos? | Tabla filtrable por marcador y tandas |
+| 📊 Deep Insights | ¿Qué patrones marcan la historia? | Mapa de calor año/fase, frecuencia goleadora |
+
+</div>
+
+---
+
+### KPIs Principales
+<div align="center">
+
+| KPI | Descripción |
+|:---|:---|
+| ⚽ Total Partidos | Número total de encuentros según los filtros aplicados |
+| 🥅 Promedio de Goles | Media de goles anotados por partido |
+| 🎯 Máximo Anotador | Jugador con mayor cantidad de goles registrados |
+| 🛡️ Tandas de Penaltis | Total de partidos decididos desde el punto de penalti |
+| 🔥 Diferencia Máxima | Victoria con el mayor margen de goles del periodo |
+
+</div>
+
+---
+
+## Detalle de cada tab
+
+<details>
+<summary><strong>🏠 Inicio</strong></summary>
+
+- **Cabecera** — Presentación visual de la plataforma GoalMetrics con branding institucional.
+- **KPIs Globales** — Panel superior con 4 tarjetas de datos clave (Total partidos, países participantes y promedios de goles).
+- **AI Insights** — Panel de inteligencia artificial que resume patrones automáticos detectados en el dataset mediante utils.py.
+- **Resumen Ejecutivo** — Descripción narrativa del alcance histórico del proyecto y la capacidad de análisis de tendencias.
+- **Informe Inteligente** — Funcionalidad bajo demanda que genera un reporte ejecutivo detallado sobre el rendimiento histórico.
+- **Análisis Comparativo (WinRate)** — Procesamiento de datos de selecciones que calcula y visualiza un ranking de victorias mediante tarjetas interactivas con banderas.
+</details>
+
+<details>
+<summary><strong>📅 Evolución</strong></summary>
+
+- **Evolución de goles por década** — Gráfico de línea histórica con media móvil, destacando la transición en la eficacia goleadora y la estabilización táctica del siglo XXI.
+- **Dominio de Victorias Locales** — Gráfico de tendencia temporal que cuantifica la ventaja competitiva de la localía, identificando décadas de mayor incidencia en el resultado para el equipo anfitrión.
+</details>
+
+<details>
+<summary><strong>⚽ Resultados</strong></summary>
+
+- **Distribución de localía** — Gráfico comparativo que cuantifica la ventaja histórica del equipo anfitrión, analizando la frecuencia de victorias, empates y derrotas.
+- **Correlación de marcadores** — Matriz de densidad de resultados que evalúa la relación estadística entre los goles locales y visitantes, identificando patrones de paridad o dominancia.
+</details>
+
+<details>
+<summary><strong>🔍 Sesgos</strong></summary>
+
+- **Ventaja de localía** — Gráfico de área temporal que mide la variación de goles locales vs. visitantes, evaluando el impacto del factor cancha en la integridad competitiva.
+- **Distribución de anomalías** — Diagrama de burbujas que destaca resultados extremos frente a la media, permitiendo identificar hitos históricos o errores de registro.
+- **Ranking de equipos** — Gráfico comparativo de frecuencias históricas que expone qué naciones dominan el dataset y posibles sesgos de recopilación de datos.
+</details>
+
+<details>
+<summary><strong>🎯 Recomendaciones</strong></summary>
+
+- **Segmentación temporal** — Guía estratégica para aplicar filtros por décadas, permitiendo ajustar los modelos de predicción a la evolución táctica del juego.
+- **Factor localía** — Directriz técnica para integrar la ventaja de campo como variable crítica y ponderada en cualquier algoritmo de probabilidades.
+- **Enriquecimiento de datos** — Hoja de ruta para la escalabilidad, proponiendo la integración de rankings FIFA y factores externos para maximizar la precisión predictiva.
+
+<details>
+<summary><strong>📌 Conclusiones</strong></summary>
+
+- **Aprendizajes clave** — Síntesis estratégica sobre el impacto histórico de la localía, la naturaleza de los sesgos en los registros y la evolución táctica global.
+- **Roadmap futuro** — Visión de escalabilidad orientada a la implementación de modelos predictivos, integración de variables externas y análisis geográficos granulares.
+</details>
+
+---
