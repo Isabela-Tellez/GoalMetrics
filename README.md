@@ -29,7 +29,7 @@
 
 ## Fuente de Datos
 
-**Dataset histórico:** [International football results from 1872 to present]([https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/brunokonzen/football-results-national-teams-18722025)). Variables numéricas: `home_score`, `away_score` (marcadores), `minute` (tiempo de evento). Variables categóricas: `team`, `scorer`, `tournament`, `city`, `country`. Variables booleanas: `neutral`, `own_goal`, `penalty`.
+**Dataset histórico:** [International football results from 1872 to present](https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/brunokonzen/football-results-national-teams-18722025). Variables numéricas: `home_score`, `away_score` (marcadores), `minute` (tiempo de evento). Variables categóricas: `team`, `scorer`, `tournament`, `city`, `country`. Variables booleanas: `neutral`, `own_goal`, `penalty`.
 
 Registro histórico de más de 46,000 partidos internacionales de fútbol masculino. Este dataset, mantenido por Mart Jürisoo, se actualiza regularmente para incluir los encuentros más recientes a nivel global.
 
