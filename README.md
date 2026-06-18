@@ -72,11 +72,10 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 
 | KPI | Descripción |
 |:---|:---|
-| ⚽ Total Partidos | Número total de encuentros según los filtros aplicados |
-| 🥅 Promedio de Goles | Media de goles anotados por partido |
-| 🎯 Máximo Anotador | Jugador con mayor cantidad de goles registrados |
-| 🛡️ Tandas de Penaltis | Total de partidos decididos desde el punto de penalti |
-| 🔥 Diferencia Máxima | Victoria con el mayor margen de goles del periodo |
+| ⚽ Total Partidos | Recuento acumulado de encuentros bajo los filtros seleccionados |
+| 🌍 Países Participantes | Número total de naciones únicas involucradas en los registros |
+| 🥅 Promedio de Goles | Media goleadora global calculada para el periodo analizado |
+| 🏆 Eficacia Goleadora | Indicador de rendimiento ofensivo basado en el historial |
 
 </div>
 
