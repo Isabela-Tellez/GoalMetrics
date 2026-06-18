@@ -157,6 +157,28 @@ streamlit run app.py
 
 ---
 
+## Instalación con Docker
+
+### Opción A — Desde Docker Hub ✅ recomendado
+
+```bash
+docker pull izzycode28/goalmetrics:latest
+docker run -p 8501:8501 izzycode28/goalmetrics:latest
+```
+
+Abrir `http://localhost:8501`. La app inicia automáticamente.
+
+### Opción B — Construir la imagen localmente
+
+```bash
+git clone https://github.com/Isabela-Tellez/GoalMetrics.git
+cd GOALMETRICS
+docker build -t goalmetrics-app
+docker run -p 8501:8501 goalmetrics-app
+```
+
+---
+
 <details>
 <summary><strong>Estructura del Proyecto</strong></summary>
 
