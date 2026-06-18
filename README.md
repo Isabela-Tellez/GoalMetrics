@@ -4,7 +4,7 @@
 
 # GoalMetrics
 
-**Dashboard de Analítica para el Mundial FIFA · Histórico 1930–2022**
+**Dashboard de Analítica para el Mundial FIFA · Histórico 1872–2024**
 
 <br><br>
 
