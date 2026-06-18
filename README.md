@@ -233,6 +233,7 @@ GoalMetrics/
 | Visualizaciones | [Plotly](https://plotly.com/python/) | 6.8.0 |
 | Procesamiento de datos | [Pandas](https://pandas.pydata.org) | 3.0.3 |
 | Álgebra numérica | [NumPy](https://numpy.org) | 2.4.6 |
+| Conversión geográfica | [country-converter](https://pypi.org/project/country-converter/) | 1.2.0 |
 | Contenedores | Docker | — |
 | CI/CD | GitHub Actions → GitHub Pages | — |
 
