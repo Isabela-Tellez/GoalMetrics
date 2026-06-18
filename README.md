@@ -131,6 +131,7 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 - **Segmentación temporal** — Guía estratégica para aplicar filtros por décadas, permitiendo ajustar los modelos de predicción a la evolución táctica del juego.
 - **Factor localía** — Directriz técnica para integrar la ventaja de campo como variable crítica y ponderada en cualquier algoritmo de probabilidades.
 - **Enriquecimiento de datos** — Hoja de ruta para la escalabilidad, proponiendo la integración de rankings FIFA y factores externos para maximizar la precisión predictiva.
+</details>
 
 <details>
 <summary><strong>📌 Conclusiones</strong></summary>
@@ -140,3 +141,109 @@ Registro histórico de más de 46,000 partidos internacionales de fútbol mascul
 </details>
 
 ---
+
+## Instalación Local
+```bash
+
+# 1. Clonación el repositorio
+git clone https://github.com/Isabela-Tellez/GoalMetrics.git
+cd GOALMETRICS
+
+# 2. Creación y activación del entorno virtual
+python -m venv venv
+venv\Scripts\activate         # Windows
+source venv/bin/activate      # macOS / Linux
+
+# 3. Instalación de dependencias
+pip install -r requirements.txt
+
+# 4. Lanzar la app
+streamlit run app.py
+```
+
+---
+
+<details>
+<summary><strong>Estructura del Proyecto</strong></summary>
+
+```
+GoalMetrics/
+├── assets/
+|   |── logo.jpeg
+|   └── LogoNoFondo.png                  # Elementos visuales
+├── data/
+│   ├── processed/
+|   |   └── master_dataset.csv           # CSV conjunto listo para el dashboard (results, goalscorers, shootouts)
+│   └── raw/
+|       ├── goalscorers.csv              # CSV Detalle granular de eventos de gol, incluyendo minuto y tipo de anotación
+|       ├── results.csv                  # CSV Histórico global de partidos con marcadores, sedes y fechas
+|       └── shootuts.csv                 # CSV Registro de resoluciones de partidos desde el punto de penalti
+├── src/
+│   ├── __init__.py
+|   ├── fase0_diagnostico.py             # Diagnóstico, limpieza inicial y detección de valores atípicos en datasets de fútbol
+│   ├── fase1_analisis.py                # Automatiza la limpieza, cálculo de métricas descriptivas y validación de hipótesis
+│   ├── fase2_estadistica.py             # Genera gráficos interactivos, analizando tendencias históricas, localía, dominio de equipos y valores atípicos
+|   ├── fase3_sesgos                     # Audita sesgos estadísticos y patrones de juego para identificar anomalías y desequilibrios
+│   ├── utils.py                         # Helpers: formateo, AI Insights, selectores
+│   └── pages/                           # Componentes de renderizado por pestaña
+│       ├── __init__.py
+│       ├── home.py                      # Tab 1: Inicio y KPIs
+│       ├── evolution.py                 # Tab 2: Tendencias temporales
+│       ├── results.py                   # Tab 3: Performance y marcadores
+│       ├── governance.py                # Tab 4: Análisis de sesgos
+│       ├── recommendations.py           # Tab 5: Guía estratégica
+│       └── conclusions.py               # Tab 6: Síntesis y roadmap
+|── styles
+|   └── global.css                       # Hoja de estilos centralizada
+├── app.py                               # Entrypoint principal (main)
+├── .gitignore                           # Excluye data/raw/, __pycache__/, .env
+├── requirements.txt                     # Dependencias fijadas (streamlit, pandas, plotly, etc.)
+└── README.md                            # Documentación del proyecto
+```
+</details>
+
+<details>
+<summary><strong>Stack Tecnológico y Datos</strong></summary>
+
+### Stack
+
+<div align="center">
+
+| Capa | Tecnología | Versión |
+|------|-----------|---------|
+| Framework UI | [Streamlit](https://streamlit.io/) | 1.58.0 |
+| Visualizaciones | [Plotly](https://plotly.com/python/) | 6.8.0 |
+| Procesamiento de datos | [Pandas](https://pandas.pydata.org) | 3.0.3 |
+| Álgebra numérica | [NumPy](https://numpy.org) | 2.4.6 |
+| CI/CD | GitHub Actions → GitHub Pages | — |
+
+</div>
+
+### Esquema de datos
+
+**Fuente histórica:** [International football results from 1872 to 2026]([https://www.kaggle.com/datasets/piterfm/fifa-football-world-cup](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?select=goalscorers.csv))
+
+<div align="center">
+
+| Archivo | Registros | Columnas clave |
+|---------|-----------|----------------|
+| `results.csv` | 46,000+ | `date`, `home_team`, `away_team`, `home_score`, `away_score`, `attendance` |
+| `goalscorers.csv` | 44,000+ | `date`, `home_team`, `team`, `scorer`, `minute` |
+| `shootouts.csv` | 600+ | `date`, `home_team`, `winner`, `first_shooter` |
+| `master_dataset.csv` | 46,000+ | Unión relacional de las fuentes con variables calculadas (`decade`, `total_goals`, `resultado_match`)|
+
+</div>
+
+</details>
+
+---
+
+## Licencia
+
+Este proyecto es de uso interno / analítico. Los datos históricos históricos de fútbol de Kaggle se utilizan con fines educativos y analíticos.
+
+---
+
+<div align="center">
+  Movida por la pasión y la fiebre del fútbol por <a href="https://github.com/Isabela-Tellez">Isabela-Tellez</a>
+</div>
