@@ -27,8 +27,6 @@
 
 Registro histórico de más de 46,000 partidos internacionales de fútbol masculino. Este dataset, mantenido por Mart Jürisoo, se actualiza regularmente para incluir los encuentros más recientes a nivel global.
 
-> Los CSVs originales no se incluyen en el repositorio.
-
 <div align="center">
 
 | Archivo | Contenido |
