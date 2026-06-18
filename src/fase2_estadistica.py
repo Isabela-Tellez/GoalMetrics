@@ -39,29 +39,3 @@ def obtener_grafico_dominio_por_decada(df):
     fig = px.bar(df_dom, x='decade', y='victorias', template="plotly_dark", 
                 color_discrete_sequence=['#F2BC57'])
     return fig
-
-def obtener_grafico_potencia(df):
-    df_top = df[df['resultado_match'] == 'Victoria Local'] \
-        .groupby('home_team').size().reset_index(name='victorias')
-
-    df_top = df_top.sort_values('victorias', ascending=False).head(10)
-
-    fig = px.bar(
-        df_top,
-        x='victorias',
-        y='home_team',
-        orientation='h',
-        template=TEMPLATE
-    )
-    return fig
-
-
-def obtener_grafico_outliers(df):
-    fig = px.scatter(
-        df,
-        x='date',
-        y='total_goals',
-        color='total_goals',
-        template=TEMPLATE
-    )
-    return fig

@@ -84,7 +84,10 @@ st.markdown("""
 # ================= DATA =================
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/processed/master_dataset.csv")
+    df = pd.read_csv("data/processed/master_dataset.csv")
+    df["date"] = pd.to_datetime(df["date"])
+    df["year"] = df["date"].dt.year
+    return df
 df = load_data()
 
 # ================= SIDEBAR =================
@@ -93,18 +96,12 @@ col_a, col_b, col_c = st.sidebar.columns([0.5, 10, 0.5])
 col_b.image("assets/LogoNoFondo.png", use_container_width = True)
 
 st.sidebar.title("⚙️ EDICIÓN (AÑO)")
-# Fecha real y extracción de datos dinámicos
-df['date'] = pd.to_datetime(df["date"])
-df['year'] = df["date"].dt.year
-
-# Años reales en lugar de década
-years = sorted(df["year"].unique()) 
+years = sorted(df["year"].unique())
 colA, colB = st.sidebar.columns(2)
 
 start_year = colA.selectbox("Desde", years, index=0)
 end_year = colB.selectbox("Hasta", years, index=len(years)-1)
 
-# Filtro basado en años reales
 filtered_tmp = df[(df["year"] >= start_year) & (df["year"] <= end_year)]
 
 # KPI CARD
@@ -177,7 +174,7 @@ elif "Tendencia de goles globales" in pregunta:
 
 # ================= FILTER FINAL =================
 df = df[
-    (df["decade"].between(start_year, end_year)) &
+    (df["year"].between(start_year, end_year)) &
     (df["tournament"].isin(tournaments)) &
     (df["country"].isin(countries))
 ]
