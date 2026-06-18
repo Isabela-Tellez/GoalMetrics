@@ -93,13 +93,19 @@ col_a, col_b, col_c = st.sidebar.columns([0.5, 10, 0.5])
 col_b.image("assets/LogoNoFondo.png", use_container_width = True)
 
 st.sidebar.title("⚙️ EDICIÓN (AÑO)")
-years = sorted(df["decade"].unique())
+# Fecha real y extracción de datos dinámicos
+df['date'] = pd.to_datetime(df["date"])
+df['year'] = df["date"].dt.year
+
+# Años reales en lugar de década
+years = sorted(df["year"].unique()) 
 colA, colB = st.sidebar.columns(2)
 
 start_year = colA.selectbox("Desde", years, index=0)
 end_year = colB.selectbox("Hasta", years, index=len(years)-1)
 
-filtered_tmp = df[(df["decade"] >= start_year) & (df["decade"] <= end_year)]
+# Filtro basado en años reales
+filtered_tmp = df[(df["year"] >= start_year) & (df["year"] <= end_year)]
 
 # KPI CARD
 st.sidebar.markdown(f"""
